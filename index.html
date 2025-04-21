@@ -1,4 +1,5 @@
 
+
 <head>
   <title>Modded Apps For Free on iOS and Android</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -146,69 +147,61 @@
 	<script src="js/app.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	 <script language=JavaScript>
-<script>
-// Combined Anti-Copy and Anti-VPN Script - Working Version
-(function() {
-    // Anti-Copy Protection
-    var message = "Warning! This content is protected.";
-    
-    // Block right-click context menu
-    document.addEventListener('contextmenu', function(e) {
-        alert(message);
-        e.preventDefault();
-        return false;
-    });
-    
-    // Block keyboard shortcuts (F12, Ctrl+Shift+I, etc.)
-    document.addEventListener('keydown', function(e) {
-        if (e.key === "F12" || 
-            (e.ctrlKey && e.shiftKey && e.key === "I") || 
-            (e.ctrlKey && e.shiftKey && e.key === "J") ||
-            (e.ctrlKey && e.key === "U")) {
-            alert(message);
-            e.preventDefault();
-            return false;
-        }
-    });
-    
-    // Anti-VPN Detection
-    async function checkVPN() {
-        try {
-            // First get user's IP address
-            const ipResponse = await fetch('https://api.ipify.org?format=json');
-            if (!ipResponse.ok) throw new Error("Failed to get IP address");
-            
-            const { ip } = await ipResponse.json();
-            console.log("User IP:", ip);
-            
-            // Check against VPN/proxy database
-            const API_KEY = '98bba1b238605b081cec97c8fa2e6fde3eb3234e4802402101011d002c50ea72';
-            const vpnCheck = await fetch(`https://proxycheck.io/v2/${ip}?key=${API_KEY}&vpn=1`);
-            
-            if (!vpnCheck.ok) throw new Error("VPN check service unavailable");
-            
-            const data = await vpnCheck.json();
-            console.log("VPN Check Results:", data);
-            
-            if (data[ip] && data[ip].proxy === "yes") {
-                // Block access if VPN detected
-                document.body.innerHTML = `
-                    <div style="text-align:center;padding:50px;font-family:Arial;">
-                        <h1 style="color:red;">Access Restricted</h1>
-                        <p>VPN/Proxy usage is not allowed on this website.</p>
-                        <p>Your IP: ${ip}</p>
-                    </div>`;
-                throw new Error("VPN detected");
-            }
-        } catch (error) {
-            console.error("Security Error:", error);
-            // You could redirect to another page here if desired
-            // window.location.href = "/no-vpn-allowed.html";
-        }
-    }
-    
-    // Run checks when page loads
-    window.addEventListener('DOMContentLoaded', checkVPN);
-})();
-</script>
+<!--
+
+//Disable right mouse click Script
+//By Maximus (maximus@nsimail.com) w/ mods by DynamicDrive
+//For full source code, visit http://www.dynamicdrive.com
+
+var message="FuckYou! Don't Copy My Website!";
+
+///////////////////////////////////
+function clickIE4(){
+if (event.button==2){
+alert(message);
+return false;
+}
+}
+
+function clickNS4(e){
+if (document.layers||document.getElementById&&!document.all){
+if (e.which==2||e.which==3){
+alert(message);
+return false;
+}
+}
+}
+
+if (document.layers){
+document.captureEvents(Event.MOUSEDOWN);
+document.onmousedown=clickNS4;
+}
+else if (document.all&&!document.getElementById){
+document.onmousedown=clickIE4;
+}
+
+document.oncontextmenu=new Function("alert(message);return false")
+
+// --> 
+ 
+document.onkeypress = function (event) {  
+event = (event || window.event);  
+if (event.keyCode == 123) {  
+return false;  
+}  
+}  
+document.onmousedown = function (event) {  
+event = (event || window.event);  
+if (event.keyCode == 123) {  
+return false;  
+}  
+}  
+document.onkeydown = function (event) {  
+event = (event || window.event);  
+if (event.keyCode == 123) {  
+return false;  
+}  
+}  
+
+</script>	
 </body><!-- JS --></html>
