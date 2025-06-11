@@ -162,31 +162,6 @@
 	<script src="js/particles.js"></script>
 	<script src="js/app.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	<script>
-		// Geolocation script for GROW A GARDEN SCRIPTS install button
-		$(document).ready(function() {
-			const usaLink = "https://scriptszoneusa.vercel.app/"; // USA-specific link
-			const defaultLink = "https://scriptszone.vercel.app/"; // Default link for non-USA users
-			const installButton = $("#grow-a-garden-install");
-
-			// Function to update the install button link
-			function updateInstallLink(link) {
-				installButton.attr("href", link);
-			}
-
-			// Fetch user's country using ipapi.co
-			$.getJSON("https://ipapi.co/json/", function(data) {
-				if (data && data.country_code === "US") {
-					updateInstallLink(usaLink);
-				} else {
-					updateInstallLink(defaultLink);
-				}
-			}).fail(function() {
-				// Fallback to default link if API fails
-				updateInstallLink(defaultLink);
-			});
-		});
-	</script>
 	<script language=JavaScript>
 		// Existing anti-copy script remains unchanged
 		var message="FuckYou! Don't Copy My Website!";
